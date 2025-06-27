@@ -21,10 +21,13 @@
                 <div class="data-container">
                     <div class="data-header">
                         <h2>Daftar Buku</h2>
-                        <div class="search-bar">
-                            <i class="fas fa-search"></i>
-                            <input type="text" placeholder="Cari Data">
-                        </div>
+                        <form action="/buku-buku" method="get">
+                            <div class="search-bar">
+                                <i class="fas fa-search"></i>
+                                <input type="text" name="keyword" placeholder="Cari Data" value="<?= esc($_GET['keyword'] ?? '') ?>">
+                            </div>
+                        </form>
+
                     </div>
 
                     <div class="form-actions">

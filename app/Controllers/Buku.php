@@ -15,17 +15,28 @@ class Buku extends BaseController
 
     public function index(): string
     {
-        $buku = $this->bukuModel->orderBy('id_buku', 'DESC')->paginate(10, 'buku'); // gunakan pagination
+        $keyword = $this->request->getGet('keyword');
+        $bukuQuery = $this->bukuModel;
+
+        if ($keyword) {
+            $bukuQuery = $bukuQuery->groupStart()
+                ->like('judul_buku', $keyword)
+                ->orLike('penulis', $keyword)
+                ->orLike('kategori', $keyword)
+                ->groupEnd();
+        }
+
+        $buku = $bukuQuery->orderBy('id_buku', 'DESC')->paginate(10, 'buku');
 
         $data = [
             'buku' => $buku,
-            'pager' => $this->bukuModel->pager, // kirim pager ke view
-            'errors' => session('errors') ?? []
+            'pager' => $this->bukuModel->pager,
+            'errors' => session('errors') ?? [],
+            'keyword' => $keyword
         ];
 
         return view('admins/buku', $data);
     }
-
 
     public function create()
     {
