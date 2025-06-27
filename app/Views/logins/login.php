@@ -8,6 +8,10 @@
   <link rel="icon" href="/assets/img/favicon.ico" type="image/png">
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       padding: 0;
@@ -15,42 +19,28 @@
       background-image: url('/assets/img/perpustakaan.jpg');
       background-size: cover;
       background-position: center;
-      min-height: 100vh;
+      height: 100vh;
       display: flex;
-      align-items: center;
       justify-content: center;
-      overflow: hidden;
+      align-items: center;
     }
 
     .login-container {
       background-color: rgba(255, 255, 255, 0.95);
-      padding: 40px;
+      padding: 40px 30px;
       border-radius: 20px;
       text-align: center;
-      max-width: 400px;
+      max-width: 380px;
       width: 90%;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-      animation: fadeInUp 1s ease-out;
+      animation: fadeInUp 1s ease-out forwards;
       opacity: 0;
-      animation-fill-mode: forwards;
     }
 
     .login-container img {
-      width: 400px;
-      margin-bottom: 40px;
+      width: 220px;
+      margin-bottom: 30px;
       animation: fadeIn 1.5s ease-out;
-    }
-
-    .login-container h1 {
-      font-size: 26px;
-      color: #2c2262;
-      margin-bottom: 5px;
-    }
-
-    .login-container p {
-      font-size: 14px;
-      color: #555;
-      margin-bottom: 25px;
     }
 
     .btn {
@@ -61,16 +51,16 @@
       padding: 12px;
       font-size: 16px;
       border: none;
-      border-radius: 7px;
+      border-radius: 8px;
       cursor: pointer;
       text-decoration: none;
       transition: all 0.3s ease;
-      margin-top: 10px;
+      margin-top: 15px;
     }
 
     .btn:hover {
       background-color: #463a9b;
-      transform: scale(1.03);
+      transform: scale(1.02);
     }
 
     .btn.daftar {
@@ -80,16 +70,15 @@
 
     .btn.daftar:hover {
       background-color: #c5c5c5;
-      transform: scale(1.03);
     }
 
     @keyframes fadeInUp {
-      0% {
-        transform: translateY(30px);
+      from {
+        transform: translateY(40px);
         opacity: 0;
       }
 
-      100% {
+      to {
         transform: translateY(0);
         opacity: 1;
       }
@@ -112,10 +101,12 @@
 
       .login-container img {
         width: 160px;
+        margin-bottom: 20px;
       }
 
-      .login-container h1 {
-        font-size: 22px;
+      .btn {
+        font-size: 15px;
+        padding: 10px;
       }
     }
   </style>

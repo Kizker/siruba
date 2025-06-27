@@ -13,7 +13,7 @@
                     <h1>Transaksi Peminjaman</h1>
                 </div>
                 <div class="header-right">
-                    <span>Hai, <?= session('user_nama') ?? 'Administrator' ?> 👋</span>
+                    <span>Hai, <?= esc(session('nama_admin') ?? 'Administrator') ?> 👋</span>
                 </div>
             </header>
 

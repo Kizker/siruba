@@ -15,7 +15,7 @@ class Buku extends BaseController
 
     public function index(): string
     {
-        $buku = $this->bukuModel->orderBy('id_buku', 'DESC')->paginate(5, 'buku'); // gunakan pagination
+        $buku = $this->bukuModel->orderBy('id_buku', 'DESC')->paginate(10, 'buku'); // gunakan pagination
 
         $data = [
             'buku' => $buku,

@@ -18,6 +18,8 @@ class Home extends BaseController
         $this->bukuModel = new BukuModel();
         $this->anggotaModel = new AnggotaModel();
         $this->peminjamanModel = new PeminjamanModel();
+
+        $this->updateStatusTerlambatGlobal();
     }
 
     private function cekLogin(): ?ResponseInterface
@@ -201,6 +203,26 @@ class Home extends BaseController
             }
         }
     }
+
+    protected function updateStatusTerlambatGlobal()
+    {
+        $peminjamanModel = new \App\Models\PeminjamanModel();
+
+        $data = $peminjamanModel
+            ->where('status', 'Sedang Dipinjam')
+            ->findAll();
+
+        $hariIni = date('Y-m-d');
+
+        foreach ($data as $p) {
+            if (!empty($p['tanggal_pengembalian']) && $hariIni > $p['tanggal_pengembalian']) {
+                $peminjamanModel->update($p['id_peminjaman'], [
+                    'status' => 'Terlambat'
+                ]);
+            }
+        }
+    }
+
 
     public function updateFotoProfil()
     {

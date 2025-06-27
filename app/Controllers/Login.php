@@ -56,11 +56,11 @@ class Login extends BaseController
         if ($admin && password_verify($password, $admin['password'])) {
             // Set session admin
             session()->set([
-                'admin_id'    => $admin['id_admin'],
-                'admin_nama'  => $admin['nama_admin'],
+                'id_admin'    => $admin['id_admin'],
+                'nama_admin'  => $admin['nama_admin'], // 🔁 ini yang digunakan di view
                 'admin_email' => $admin['email'],
                 'admin_level' => $admin['level'],
-                'admin_foto'  => $admin['foto_profil'] ?? 'admin-avatar.png',
+                'admin_foto'  => $admin['foto_profil'] ?? 'default-avatar.png',
                 'isAdmin'     => true,
                 'isLoggedIn'  => true,
             ]);
